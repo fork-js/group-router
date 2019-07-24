@@ -1,0 +1,25 @@
+{
+  "name": "@forkjs/group-router",
+  "version": "1.0.0",
+  "description": "Group router for forkjs & express.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fork-js/group-router.git"
+  },
+  "keywords": [
+    "express.js",
+    "group-router",
+    "router",
+    "forkjs"
+  ],
+  "author": "Eshant Sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fork-js/group-router/issues"
+  },
+  "homepage": "https://github.com/fork-js/group-router#readme"
+}
