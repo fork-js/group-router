@@ -1,3 +1,15 @@
+# @forkjs/group-router
+
+<blockquote> Group Router for <code>express.js</code> </blockquote>
+
+# What is @forkjs/group-router
+
+<code>@forkjs/group-router</code> gives you flexibility to writer your express.js routes in group format which is easy to write and maintain. It also provides you support for group level middlewares.
+
+See the Quick start guide for more details.
+
+
+
 # Initialize Router
 
 var app = require("express-group-router");
