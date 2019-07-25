@@ -47,8 +47,6 @@ methods.get = function (path, callback, middleware) {
     if(this.version)
         urlPath = "/"+this.version + urlPath
     let midArr = methods.getMidArray(this.middleware, middleware);
-    // if(path == "/getSignedUrl")
-        console.log("URL ",urlPath)
     router.get(urlPath,midArr, callback);
     
 }
@@ -72,7 +70,6 @@ methods.put = function (path, callback, middleware) {
     let midArr = methods.getMidArray(this.middleware, middleware);
     if(this.version)
         urlPath = "/"+this.version + urlPath
-        console.log("adding ", urlPath)
     router.put(urlPath, midArr, callback);
 }
 
