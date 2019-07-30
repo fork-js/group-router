@@ -37,7 +37,7 @@ methods.getMidArray = function(middlewares, current ){
     if(!Array.isArray(current) && typeof current == "object" && current.constructor.name == "ForkMiddleware"){
         let _current = function(req,res, next){
             req._forkRouteSchema = current.schema;
-            return current.RouteValidator(req, res, next);
+            return current.MiddlewareValidator(req, res, next);
         }
         midArr.push(_current);
     }
@@ -50,7 +50,7 @@ methods.getMidArray = function(middlewares, current ){
             if(typeof current[i] == "object" && current[i].constructor.name == "ForkMiddleware"){
                 let _current = function(req,res, next){
                     req._forkRouteSchema = current[i].schema;
-                    return current[i].RouteValidator(req, res, next);
+                    return current[i].MiddlewareValidator(req, res, next);
                 }
                 midArr.push(_current);
             }
