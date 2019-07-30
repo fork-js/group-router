@@ -25,6 +25,7 @@ methods.getMidArray = function(middlewares, current ){
     let midArr = [];
     middlewares.forEach(element => {
         
+        
         if(!element || typeof element == "undefined")
             return;
         if(typeof element == "function")
@@ -32,10 +33,33 @@ methods.getMidArray = function(middlewares, current ){
         if(Array.isArray(element))
             midArr = midArr.concat(element);
     });
-    if(typeof current == "function")
+
+    if(!Array.isArray(current) && typeof current == "object" && current.constructor.name == "ForkMiddleware"){
+        let _current = function(req,res, next){
+            req._forkRouteSchema = current.schema;
+            return current.RouteValidator(req, res, next);
+        }
+        midArr.push(_current);
+    }
+    else if(typeof current == "function")
         midArr.push(current);
-    else if(Array.isArray(current))
-        midArr = midArr.concat(current);
+    else if(Array.isArray(current)){
+
+        for(let i=0; i< current.length; i++){
+
+            if(typeof current[i] == "object" && current[i].constructor.name == "ForkMiddleware"){
+                let _current = function(req,res, next){
+                    req._forkRouteSchema = current[i].schema;
+                    return current[i].RouteValidator(req, res, next);
+                }
+                midArr.push(_current);
+            }
+            else if(typeof current == "function")
+                midArr.push(current[i]);
+        }
+        
+    }
+        // midArr = midArr.concat(current);
     
     return midArr;
 
