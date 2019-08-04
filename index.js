@@ -111,6 +111,16 @@ methods.postXml = function (path,xmlParser, callback) {
     router.post(this.parent.join("") + path,xmlParser, callback);
 }
 
+methods.register = function(app, path){
+
+    fs.readdirSync(path+"/routes/").filter((e) => { return e.endsWith(".js") }).forEach(file => {
+        let name = file.substring(0, file.length - 3);
+        name = (name == "index") ? "" : name;
+        app.use("/" + name, require(path+"/routes/" + name))
+    });
+
+}
+
 methods.router = router;
 module.exports = methods;
 
