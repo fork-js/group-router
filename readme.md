@@ -14,7 +14,7 @@ See the Quick start guide for more details.
 
 ### Initialize Router
 
-var app = require("express-group-router");
+var app = require("@forkjs/group-router");
 
 ### To Specify the API Version, this will add prefix to the routes if specified
 app.version = "v3";
